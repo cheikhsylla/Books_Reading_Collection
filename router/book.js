@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
+// setting the static middleware for this route 
+router.use(express.static('public'));
 
-
-router.get('/',(req,res)=>{
-    res.send('<h1> oh yes that working ! </h1>');
+router.get('/create',(req,res)=>{
+    res.render('newbook');
 })
 
 
