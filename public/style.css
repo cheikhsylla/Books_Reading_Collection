@@ -35,3 +35,45 @@ ul {
 		text-align: center;
 		color: white;
 }
+
+form {
+  /* Uniquement centrer le formulaire sur la page */
+  margin: 0 auto;
+  width: 700px;
+  /* Encadré pour voir les limites du formulaire */
+  padding: 1em;
+  border: 2px solid black;
+  border-radius: 1em;
+  margin-top: 15%;
+}
+form div + div {
+  margin-top: 2em;
+}
+label {
+  /* Pour être sûrs que toutes les étiquettes ont même taille et sont correctement alignées */
+  display: inline-block;
+  width: 120px;
+  text-align: right;
+  background-color: black;
+  color: white;
+}
+.button {
+  /* Pour placer le bouton à la même position que les champs texte */
+  padding-left: 90px; /* même taille que les étiquettes */
+}
+
+button {
+  /* Cette marge supplémentaire représente grosso modo le même espace que celui
+     entre les étiquettes et les champs texte */
+  margin-left: 6em;
+  color:white;
+  background-color: blue;
+}
+.read-book{
+  text-align: center;
+  color: black;
+  text-decoration: black;
+  text-transform: capitalize;
+  text-decoration: underline;
+  
+}
