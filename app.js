@@ -3,8 +3,9 @@ const app = express();
 const mongoose = require('mongoose');
 const Book = require('./models/book');
 
+const bodyParser= require('body-parser');
 // conect to the mongodb
-const dbURI='mongodb+srv://cheikh:al-Faruq4@books.sfd85.mongodb.net/learnedbook?retryWrites=true&w=majority';
+const dbURI='mongodb+srv://cheikh:test1234@books.sfd85.mongodb.net/learnedbook?retryWrites=true&w=majority';
 
 mongoose.connect(dbURI,{useNewUrlParser:true,useUnifiedTopology:true})
     .then((result)=>app.listen(3000))
@@ -14,6 +15,7 @@ const book=require('./router/book')
 
 // register view engine
 app.set('view engine','ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // listen for request 
 // app.listen(3000);
@@ -22,22 +24,15 @@ app.set('view engine','ejs');
 app.use(express.static('public'));
 // /home page 
 app.get('/',(req,res)=>{
-    
-    res.render('home');
+    // const book= new Book();
+    Book.find()
+			.then(result=>{
+				res.render('home',{book:result});
+			})
+			.catch(err=> console.log(err));   
 })
 
-app.get('/add-book',(req,res)=>{
-    const book = new Book({
-        author:'dienf sylla',
-        bookName:'learn java',
-        finished:'20/02/2021'
-    });
-    book.save()
-        .then((result)=>{
-            res.send(result);
-        })
-        .catch((err)=>console.log(err));
-})
+
 
 // about page 
 app.get('/about',(req,res)=>{
@@ -45,7 +40,6 @@ app.get('/about',(req,res)=>{
 })
 
 // Book router 
-
 app.use('/book',book);
 
 //redirected link 
@@ -53,12 +47,4 @@ app.get('/about-me',(req,res)=>{
     res.redirect('about');
 })
 
-
-app.get('/all-book',(req,res)=>{
-    Book.findById('6071f88ca22e703248eac402')
-        .then(result=>{
-            res.send(result)
-        })
-        .catch(err=>console.log(err));
-})
 

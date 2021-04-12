@@ -77,3 +77,40 @@ button {
   text-decoration: underline;
   
 }
+
+.book{
+  width: 500px;
+  background-color:blue;
+  border: white;
+  margin: 0 auto;
+  text-align: center;
+  
+}
+.book p {
+  color:white;
+  text-align: center;
+  
+  display: inline-block;
+  
+  
+}
+.book strong {
+  text-decoration: underline;
+  display: inline-block;
+  text-align: right;
+}
+
+.button-more{
+  color:blue;
+  background:white;
+  border-radius: 50%;
+  text-transform: capitalize;
+  border: 2px solid blue;
+  
+}
+
+.button-more:hover{
+  background:chartreuse;
+  color: white;
+}
+
